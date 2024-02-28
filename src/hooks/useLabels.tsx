@@ -12,6 +12,7 @@ export const useLabels = () => {
     queryKey: ["labels"],
     queryFn: getLabels,
     staleTime: 1000 * 60 * 60,
+    // initialData: [],
   });
 
   return labelsQuery;
