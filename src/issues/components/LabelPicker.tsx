@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { gitHubApi } from "../../api/githubApi";
+import { Label } from "../interfaces/label";
 
-const getLabels = async () => {
-  const resp = await fetch(
-    "https://api.github.com/repos/facebook/react/labels"
-  );
-  const data = await resp.json();
-  console.log(data);
+const getLabels = async (): Promise<Label[]> => {
+  const { data } = await gitHubApi.get<Label[]>("/labels");
   return data;
 };
 
